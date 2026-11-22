@@ -1,0 +1,187 @@
+Zahra Saboor (532524) | Zainab Khalid (510899) | Umema Sufyan (529059)
+Zahra Saboor (532524) | Zainab Khalid (510899) | Umema Sufyan (529059)
+
+PART A: WORLD MODEL
+instance 807057cb | grid 31 x 31 | start (27, 23) | stops [(25, 26), (27, 26), (17, 21)]
+twists: ['wind_drift', 'teleport_tunnels'] | rival: interceptor depth 5 | slip 0.2 | wind L 0.15
+tunnels: [((15, 19), (27, 5)), ((15, 8), (5, 6))]
+cost map build: numpy 17.6 us | pure python loop 445.7 us | speed-up 25.4x
+Zahra Saboor (532524) | Zainab Khalid (510899) | Umema Sufyan (529059)
+
+PART B: ROUTE PLANNING ON THE INSTANCE
+Zahra Saboor (532524) | Zainab Khalid (510899) | Umema Sufyan (529059)
+instance 807057cb start (27, 23) stops [(25, 26), (27, 26), (17, 21)]
+
+ALL ALGORITHMS (own heuristic for Greedy and A*)
+algorithm                 status            cost  steps  expanded  stored  time(ms)  peak(KB)
+BFS                       ok                  75     20       909    1010      19.1        95
+UCS                       ok                  68     20       903    1050      32.4       205
+Greedy                    ok                  75     20        20      49       0.8         8
+A*                        ok                  68     20        24      54       0.9         8
+IDS                       node_limit           -      -    300001      15    6302.2        29
+DLS(l=40)                 node_limit           -      -    300001      41    7645.0        25
+Zahra Saboor (532524) | Zainab Khalid (510899) | Umema Sufyan (529059)
+
+A* HEURISTIC COMPARISON
+algorithm                 status            cost  steps  expanded  stored  time(ms)  peak(KB)
+A* + own_mst_exact        ok                  68     20        24      54       2.7         8
+A* + manhattan_nearest    ok                  68     20       515     608      22.2        88
+A* + farthest_stop        ok                  68     20       373     478      13.1        91
+A* + zero (UCS)           ok                  68     20       903    1050      26.0       205
+A* + own x1.5 (inadm)     ok                  68     20        20      46       0.8         8
+A* + manhattan x5 (inadm) ok                  79     22       631     722      22.7       149
+Zahra Saboor (532524) | Zainab Khalid (510899) | Umema Sufyan (529059)
+INADMISSIBLE VARIANT: manhattan x5 returns cost 79 vs optimal 68 (gap 16.2%), expanded 631 nodes vs 24 for own heuristic
+Zahra Saboor (532524) | Zainab Khalid (510899) | Umema Sufyan (529059)
+
+CONSISTENCY CHECK (every edge of the whole state space)
+own_mst_exact {'states': 6412, 'edges': 20732, 'violations': 0, 'worst_gap': 0.0}
+manhattan_nearest {'states': 6412, 'edges': 20732, 'violations': 14, 'worst_gap': 43.0}
+farthest_stop {'states': 6412, 'edges': 20732, 'violations': 14, 'worst_gap': 43.0}
+Zahra Saboor (532524) | Zainab Khalid (510899) | Umema Sufyan (529059)
+
+MEMORY LIMIT: A* vs IDS with max 500 stored states
+
+MEMORY LIMITED
+algorithm                 status            cost  steps  expanded  stored  time(ms)  peak(KB)
+A* zero-h (UCS-like)      memory_limit         -      -       419     501      18.6        88
+A* own heuristic          ok                  68     20        24      54       1.1         8
+IDS                       node_limit           -      -    300001      15    5947.5        28
+Zahra Saboor (532524) | Zainab Khalid (510899) | Umema Sufyan (529059)
+
+SMALL PROBLEM WHERE IDS CAN FINISH: only stop 1, at most 40 stored states
+
+IDS UNDER A MEMORY LIMIT (single stop)
+algorithm                 status            cost  steps  expanded  stored  time(ms)  peak(KB)
+UCS                       memory_limit         -      -        25      41       0.5         6
+A* zero-h                 memory_limit         -      -        25      41       0.4         6
+A* own heuristic          ok                  17      5         5      14       0.3         3
+IDS                       ok                  32      5        61       6       1.5         9
+Zahra Saboor (532524) | Zainab Khalid (510899) | Umema Sufyan (529059)
+without a limit: UCS stores 47 states (cost 17), IDS stores 6 states and returns cost 32: IDS is optimal in steps, not in cost
+Zahra Saboor (532524) | Zainab Khalid (510899) | Umema Sufyan (529059)
+
+PART E: EXPERIMENTS
+  scenarios done: 10/30
+  scenarios done: 20/30
+  scenarios done: 30/30
+Zahra Saboor (532524) | Zainab Khalid (510899) | Umema Sufyan (529059)
+
+TABLE E1: SEARCH ON 30 SEEDED SCENARIOS (random start + 3-4 stops on the instance grid), mean +/- 95% CI
+configuration                             cost          expanded       time (ms)     peak (KB)     gap %
+BFS                               246.0+/-20.5        5189+/-844       123.4+/-20.8     1001+/-171    25.48
+UCS                               196.1+/-15.3        5504+/-883       191.9+/-34.3     1735+/-295     0.00
+Greedy + own h                    245.8+/-21.8          72+/-13          3.2+/-0.6        21+/-3      25.08
+A* + own_mst_exact                196.1+/-15.3         113+/-30          4.8+/-1.5        33+/-10      0.00
+A* + manhattan_nearest            197.3+/-15.5        4075+/-742       183.0+/-36.4     1367+/-285     0.57
+A* + farthest_stop                197.5+/-15.5        3059+/-597       138.1+/-29.2      995+/-217     0.65
+optimal plan used a tunnel in 21 of 30 scenarios
+Zahra Saboor (532524) | Zainab Khalid (510899) | Umema Sufyan (529059)
+
+TABLE E2: ABLATION OF THE OWN HEURISTIC (A*, same scenarios)
+variant                                     expanded       time (ms)     gap %
+full (nearest exact + MST)              113+/-30          4.8+/-1.4      0.00
+without MST term                       2939+/-611       134.9+/-30.2     0.00
+without nearest-stop term              1242+/-223        38.8+/-8.4      0.08
+Manhattan instead of exact dist         592+/-124        23.1+/-6.0      0.42
+note: 'without nearest-stop term' is admissible but inconsistent, and our A* does not reopen closed states,
+      so it can return a slightly worse plan. The Manhattan variants are also inadmissible because tunnels shortcut distance.
+Zahra Saboor (532524) | Zainab Khalid (510899) | Umema Sufyan (529059)
+
+FAILURE ANALYSIS
+- scenarios unsolved by UCS: 0
+- A* + farthest_stop returned a worse-than-optimal plan in 4/30 scenarios (Manhattan-based bound is broken by tunnels; A* does not reopen closed states)
+- A* + manhattan_nearest returned a worse-than-optimal plan in 3/30 scenarios (Manhattan-based bound is broken by tunnels; A* does not reopen closed states)
+- Greedy was suboptimal in 30/30 scenarios, mean gap 25.1% on those
+Zahra Saboor (532524) | Zainab Khalid (510899) | Umema Sufyan (529059)
+
+PART C: RIVAL AGENT
+Zahra Saboor (532524) | Zainab Khalid (510899) | Umema Sufyan (529059)
+instance 807057cb | rival interceptor depth 5 | slip 0.2 | wind 0.15 L | rival speed 0.6
+
+TABLE 1: NODE COUNTS (mean of 30 scenarios, agent to move; saved % = mean over scenarios +/- 95% CI)
+depth   minimax  AB plain  AB ordered       saved plain %     saved ordered %
+    2        16        16          11         0.4 +/-0.9         27.9 +/-3.3 
+    3        56        52          26         6.6 +/-1.0         50.7 +/-5.7 
+    4       206       141          49        31.3 +/-1.5         73.6 +/-3.4 
+    5       669       398         100        40.0 +/-1.6         83.1 +/-2.6 
+Zahra Saboor (532524) | Zainab Khalid (510899) | Umema Sufyan (529059)
+
+TABLE 2: WEIGHT TUNING (grid search, 20 games each, tuning seeds)
+ cost  safety  margin  win  draw  loss
+  1.0       3       6   12     0     8
+  2.0       3       0   11     0     9
+  2.0       3       3   11     0     9
+  2.0       3       6   11     0     9
+  2.0      10       6   10     1     9
+  1.0       0       3   10     0    10
+  2.0       0       6   10     0    10
+  2.0       6       6   10     0    10
+  1.0       6       3    9     2     9
+  1.0       6       6    9     2     9
+best weights: cost 1.0 safety 3 margin 6 (delivered = 100)
+Zahra Saboor (532524) | Zainab Khalid (510899) | Umema Sufyan (529059)
+
+TABLE 3: 30 GAMES vs interceptor rival (win / draw / loss with 95% Wilson CI)
+with slip + wind              win 57% [39, 73]   draw 0% [0, 11]   loss 43% [27, 61]
+deterministic (no slip/wind)  win 97% [83, 99]   draw 0% [0, 11]   loss 3% [1, 17]
+Zahra Saboor (532524) | Zainab Khalid (510899) | Umema Sufyan (529059)
+
+TABLE 4: REPLANNING DUE TO SLIP / WIND (deterministic assumption)
+replans triggered per game: 10.7 +/- 2.3   (30% of all turns)
+slips per game: 6.5   wind pushes per game: 5.3
+mean cost per game (stochastic): 149.3 +/- 26.6
+extra cost vs deterministic (paired): 60.1 +/- 27.4
+mean turns: stochastic 35.3, deterministic 26.4
+Zahra Saboor (532524) | Zainab Khalid (510899) | Umema Sufyan (529059)
+
+TABLE 5: SENSITIVITY TO SLIP PROBABILITY (30 games each, wind 0.15, rival depth 5)
+  slip     win %            CI   draw %   loss %  replans/game  mean cost
+   0.0        93      [79, 98]        0        7           3.8      104.2
+   0.1        63      [46, 78]        0       37           6.9      124.9
+   0.2        57      [39, 73]        0       43          10.7      149.3
+   0.3        27      [14, 44]        0       73          12.6      133.4
+   0.5         3       [1, 17]        0       97          18.5      152.1
+Zahra Saboor (532524) | Zainab Khalid (510899) | Umema Sufyan (529059)
+
+TABLE 6: SENSITIVITY TO RIVAL SEARCH DEPTH (30 games each, slip 0.2, wind 0.15)
+ depth     win %            CI   draw %   loss %
+     3        60      [42, 75]        0       40
+     4        53      [36, 70]        0       47
+     5        57      [39, 73]        0       43
+     6        53      [36, 70]        3       43
+Zahra Saboor (532524) | Zainab Khalid (510899) | Umema Sufyan (529059)
+
+PART D: LLM DISPATCHER (summary of saved results)
+
+TABLE D1: ALL 20 REQUESTS (backend errors count as failures)
+mode                          success [95% CI]    calls      cost wrongtool  badargs  ignored
+direct planner                  100% [84, 100]      1.3      78.3         0        0        0
+LLM (no validation)              95% [76, 99]      1.8      78.3         6        0        0
+LLM + validation layer           75% [53, 89]      1.4      78.8         5        0        0
+Zahra Saboor (532524) | Zainab Khalid (510899) | Umema Sufyan (529059)
+
+TABLE D2: ONLY REQUESTS WITHOUT API ERRORS IN EITHER LLM MODE (n=15 of 20; excluded: [4, 5, 6, 13, 15])
+mode                          success [95% CI]    calls      cost wrongtool  badargs  ignored
+direct planner                  100% [80, 100]      1.3      78.8         0        0        0
+LLM (no validation)              93% [70, 99]      1.5      78.8         3        0        0
+LLM + validation layer          100% [80, 100]      1.5      78.8         5        0        0
+Zahra Saboor (532524) | Zainab Khalid (510899) | Umema Sufyan (529059)
+
+FAILURE LOG (LLM without validation / with validation)
+request  2: no-val [] wrong_tool=True bad_args=0 | val [] wrong_tool=True bad_args=0
+request  4: no-val [] wrong_tool=True bad_args=0 | val ["backend_error: 'parts'"] wrong_tool=False bad_args=0
+request  5: no-val [] wrong_tool=True bad_args=0 | val ['backend_error: The read operation timed '] wrong_tool=False bad_args=0
+request  6: no-val [] wrong_tool=True bad_args=0 | val ["backend_error: 'parts'"] wrong_tool=False bad_args=0
+request  7: no-val [] wrong_tool=False bad_args=0 | val [] wrong_tool=True bad_args=0
+request  8: no-val ['claimed_feasible'] wrong_tool=True bad_args=0 | val [] wrong_tool=False bad_args=0
+request  9: no-val [] wrong_tool=False bad_args=0 | val [] wrong_tool=True bad_args=0
+request 10: no-val [] wrong_tool=True bad_args=0 | val [] wrong_tool=True bad_args=0
+request 11: no-val [] wrong_tool=False bad_args=0 | val [] wrong_tool=True bad_args=0
+request 13: no-val [] wrong_tool=False bad_args=0 | val ["backend_error: 'parts'"] wrong_tool=False bad_args=0
+request 15: no-val [] wrong_tool=False bad_args=0 | val ["backend_error: 'parts'"] wrong_tool=False bad_args=0
+Zahra Saboor (532524) | Zainab Khalid (510899) | Umema Sufyan (529059)
+figures saved in ./figures (all carry the member stamp)
+
+all done in 73s. Tables: results/run_all_output.txt, figures: ./figures
+Zahra Saboor (532524) | Zainab Khalid (510899) | Umema Sufyan (529059)

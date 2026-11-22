@@ -1,0 +1,375 @@
+{
+  "node_counts": [
+    {
+      "ordered_ci": 3.307464267501668,
+      "plain_ci": 0.8711111111111107,
+      "ordered_mean": 27.888888888888893,
+      "plain_mean": 0.44444444444444436,
+      "depth": 2,
+      "minimax": 16.1,
+      "ab_plain": 16.033333333333335,
+      "ab_ordered": 11.366666666666667,
+      "saved_plain_pct": 0.41407867494823725,
+      "saved_ordered_pct": 29.399585921325055
+    },
+    {
+      "ordered_ci": 5.700776242012006,
+      "plain_ci": 0.957808744817731,
+      "ordered_mean": 50.68330362448008,
+      "plain_mean": 6.615171321053675,
+      "depth": 3,
+      "minimax": 56.5,
+      "ab_plain": 52.5,
+      "ab_ordered": 25.833333333333332,
+      "saved_plain_pct": 7.079646017699115,
+      "saved_ordered_pct": 54.277286135693224
+    },
+    {
+      "ordered_ci": 3.4191839139567537,
+      "plain_ci": 1.4953297962383443,
+      "ordered_mean": 73.55678324527479,
+      "plain_mean": 31.33809795788062,
+      "depth": 4,
+      "minimax": 206.5,
+      "ab_plain": 140.6,
+      "ab_ordered": 49.43333333333333,
+      "saved_plain_pct": 31.912832929782088,
+      "saved_ordered_pct": 76.06133979015335
+    },
+    {
+      "ordered_ci": 2.570479057524701,
+      "plain_ci": 1.6408741383737897,
+      "ordered_mean": 83.09928621284014,
+      "plain_mean": 39.97969938112569,
+      "depth": 5,
+      "minimax": 669.0,
+      "ab_plain": 398.26666666666665,
+      "ab_ordered": 100.13333333333334,
+      "saved_plain_pct": 40.46836073741904,
+      "saved_ordered_pct": 85.03238664673643
+    }
+  ],
+  "tuning": [
+    {
+      "cost": 1.0,
+      "safety": 3,
+      "margin": 6,
+      "win": 12,
+      "draw": 0,
+      "loss": 8
+    },
+    {
+      "cost": 2.0,
+      "safety": 3,
+      "margin": 0,
+      "win": 11,
+      "draw": 0,
+      "loss": 9
+    },
+    {
+      "cost": 2.0,
+      "safety": 3,
+      "margin": 3,
+      "win": 11,
+      "draw": 0,
+      "loss": 9
+    },
+    {
+      "cost": 2.0,
+      "safety": 3,
+      "margin": 6,
+      "win": 11,
+      "draw": 0,
+      "loss": 9
+    },
+    {
+      "cost": 2.0,
+      "safety": 10,
+      "margin": 6,
+      "win": 10,
+      "draw": 1,
+      "loss": 9
+    },
+    {
+      "cost": 1.0,
+      "safety": 0,
+      "margin": 3,
+      "win": 10,
+      "draw": 0,
+      "loss": 10
+    },
+    {
+      "cost": 2.0,
+      "safety": 0,
+      "margin": 6,
+      "win": 10,
+      "draw": 0,
+      "loss": 10
+    },
+    {
+      "cost": 2.0,
+      "safety": 6,
+      "margin": 6,
+      "win": 10,
+      "draw": 0,
+      "loss": 10
+    },
+    {
+      "cost": 1.0,
+      "safety": 6,
+      "margin": 3,
+      "win": 9,
+      "draw": 2,
+      "loss": 9
+    },
+    {
+      "cost": 1.0,
+      "safety": 6,
+      "margin": 6,
+      "win": 9,
+      "draw": 2,
+      "loss": 9
+    },
+    {
+      "cost": 2.0,
+      "safety": 6,
+      "margin": 3,
+      "win": 9,
+      "draw": 1,
+      "loss": 10
+    },
+    {
+      "cost": 1.0,
+      "safety": 0,
+      "margin": 6,
+      "win": 9,
+      "draw": 0,
+      "loss": 11
+    },
+    {
+      "cost": 1.0,
+      "safety": 3,
+      "margin": 3,
+      "win": 9,
+      "draw": 0,
+      "loss": 11
+    },
+    {
+      "cost": 1.0,
+      "safety": 0,
+      "margin": 0,
+      "win": 8,
+      "draw": 0,
+      "loss": 12
+    },
+    {
+      "cost": 2.0,
+      "safety": 0,
+      "margin": 0,
+      "win": 8,
+      "draw": 0,
+      "loss": 12
+    },
+    {
+      "cost": 2.0,
+      "safety": 0,
+      "margin": 3,
+      "win": 8,
+      "draw": 0,
+      "loss": 12
+    },
+    {
+      "cost": 1.0,
+      "safety": 3,
+      "margin": 0,
+      "win": 7,
+      "draw": 1,
+      "loss": 12
+    },
+    {
+      "cost": 2.0,
+      "safety": 6,
+      "margin": 0,
+      "win": 7,
+      "draw": 1,
+      "loss": 12
+    },
+    {
+      "cost": 2.0,
+      "safety": 10,
+      "margin": 3,
+      "win": 7,
+      "draw": 1,
+      "loss": 12
+    },
+    {
+      "cost": 1.0,
+      "safety": 10,
+      "margin": 6,
+      "win": 5,
+      "draw": 6,
+      "loss": 9
+    },
+    {
+      "cost": 1.0,
+      "safety": 6,
+      "margin": 0,
+      "win": 3,
+      "draw": 16,
+      "loss": 1
+    },
+    {
+      "cost": 1.0,
+      "safety": 10,
+      "margin": 3,
+      "win": 3,
+      "draw": 15,
+      "loss": 2
+    },
+    {
+      "cost": 2.0,
+      "safety": 10,
+      "margin": 0,
+      "win": 3,
+      "draw": 11,
+      "loss": 6
+    },
+    {
+      "cost": 1.0,
+      "safety": 10,
+      "margin": 0,
+      "win": 2,
+      "draw": 18,
+      "loss": 0
+    }
+  ],
+  "games": {
+    "stochastic": {
+      "win": 17,
+      "draw": 0,
+      "loss": 13
+    },
+    "deterministic": {
+      "win": 29,
+      "draw": 0,
+      "loss": 1
+    }
+  },
+  "replanning": {
+    "replans_per_game": [
+      10.7,
+      2.317484288034626
+    ],
+    "turn_rate": 0.30340264650283555,
+    "extra_cost": [
+      60.13333333333333,
+      27.430783126392924
+    ]
+  },
+  "sensitivity": {
+    "slip": [
+      {
+        "slip": 0.0,
+        "win": 28,
+        "draw": 0,
+        "loss": 2,
+        "ci": [
+          0.7867618227892791,
+          0.9815233646723066
+        ],
+        "replans": 3.8,
+        "cost": 104.2
+      },
+      {
+        "slip": 0.1,
+        "win": 19,
+        "draw": 0,
+        "loss": 11,
+        "ci": [
+          0.45513246433604937,
+          0.7812629779598231
+        ],
+        "replans": 6.866666666666666,
+        "cost": 124.9
+      },
+      {
+        "slip": 0.2,
+        "win": 17,
+        "draw": 0,
+        "loss": 13,
+        "ci": [
+          0.3919700954540873,
+          0.7262276256938489
+        ],
+        "replans": 10.7,
+        "cost": 149.3
+      },
+      {
+        "slip": 0.3,
+        "win": 8,
+        "draw": 0,
+        "loss": 22,
+        "ci": [
+          0.14182495553910618,
+          0.4444830204431169
+        ],
+        "replans": 12.6,
+        "cost": 133.4
+      },
+      {
+        "slip": 0.5,
+        "win": 1,
+        "draw": 0,
+        "loss": 29,
+        "ci": [
+          0.0059084379948573795,
+          0.16670751396958874
+        ],
+        "replans": 18.533333333333335,
+        "cost": 152.06666666666666
+      }
+    ],
+    "depth": [
+      {
+        "depth": 3,
+        "win": 18,
+        "draw": 0,
+        "loss": 12,
+        "ci": [
+          0.42320052498273836,
+          0.7540960567391659
+        ]
+      },
+      {
+        "depth": 4,
+        "win": 16,
+        "draw": 0,
+        "loss": 14,
+        "ci": [
+          0.3614201328152505,
+          0.6976787277587178
+        ]
+      },
+      {
+        "depth": 5,
+        "win": 17,
+        "draw": 0,
+        "loss": 13,
+        "ci": [
+          0.3919700954540873,
+          0.7262276256938489
+        ]
+      },
+      {
+        "depth": 6,
+        "win": 16,
+        "draw": 1,
+        "loss": 13,
+        "ci": [
+          0.3614201328152505,
+          0.6976787277587178
+        ]
+      }
+    ]
+  }
+}
